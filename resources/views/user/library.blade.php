@@ -92,7 +92,7 @@
                           <div class="d-flex justify-content-between align-items-center">
                             <div class="btn-group">
                   
-                              <a href="public/file/{{$book->file}}" download="{{$book->file}}"><button type="button" class="btn btn-sm btn-outline-primary">Download</button></a>
+                              <a href="storage/file/{{$book->file}}" download="{{$book->file}}"><button type="button" class="btn btn-sm btn-outline-primary">Download</button></a>
                             </div>
                             <small class="text-muted">9 mins</small>
                           </div>
