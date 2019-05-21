@@ -134,7 +134,9 @@
                       <td>{{$assignment->description}}</td>
                       <td>{{$assignment->date}}</td>
     
-                         <td><a href="{{route('assignment.edit', $assignment->id)}}" class="btn btn-warning"><i class="icon_check_alt2"></i></a>
+                         <td>
+                           
+                          <a href="{{route('assignment.edit', $assignment->id)}}" class="btn btn-warning"><i class="icon_check_alt2"></i></a>
                           <form action="{{route('assignment.destroy', $assignment->id)}}" method="POST">
                             @csrf
                             @method('DELETE')

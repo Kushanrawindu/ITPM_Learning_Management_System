@@ -95,13 +95,16 @@ class assignmentController extends Controller
             'newdate'=>'required'
         ]);
 
-        $assignment = new assignment;
+        //$assignment = new assignment;
+        $assignment = assignment::findOrFail($id);
         $assignment->subName = $request->newsubName;
         $assignment->description = $request->newdescription;
         $assignment->date = $request->newdate;
         $assignment->update();
         
         return redirect(route('assignment.index'))->with('success', 'Successfully Updated');
+
+        //dd($request->all());
     }
 
     /**
