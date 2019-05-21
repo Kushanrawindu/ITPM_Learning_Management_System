@@ -88,7 +88,8 @@
                              <td>{{$library->description}}</td>
                              <td>{{$library->author}}</td>
         
-                             <td><a href="#myEditModel" data-toggle="modal" class="btn btn-warning"><i class="icon_check_alt2"></i></a>
+                             <td>
+                                <a href="{{route('library.edit', $library->id)}}"  data-toggle="modal" class="btn btn-warning"><i class="icon_check_alt2"></i></a>
                                 <form action="{{route('library.destroy', $library->id)}}" method="POST">
                                     @csrf
                                     @method('DELETE')

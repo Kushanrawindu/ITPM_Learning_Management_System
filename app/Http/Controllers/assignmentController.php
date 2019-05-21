@@ -95,7 +95,6 @@ class assignmentController extends Controller
             'newdate'=>'required'
         ]);
 
-        //$assignment = new assignment;
         $assignment = assignment::findOrFail($id);
         $assignment->subName = $request->newsubName;
         $assignment->description = $request->newdescription;

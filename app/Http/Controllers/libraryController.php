@@ -90,7 +90,8 @@ class LibraryController extends Controller
      */
     public function edit($id)
     {
-        //
+        $library = library::find($id);
+        return view('admin.library.edit')->with('library', $library);
     }
 
     /**
@@ -102,7 +103,33 @@ class LibraryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'newfile'=>'required|mimes:docx,pdf,ppt,rar,zip|max:1999',
+            'newname'=>'required',
+            'newdescription'=>'required',
+            'newauthor'=>'required'
+        ]);
+
+        //handle file upload
+        if($request->hasFile('newfile')){
+            $filenameWithExt = $request->file('newfile')->getClientOriginalName();
+            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+            $extension = $request->file('newfile')->getClientOriginalExtension();
+            $fileNameToStore = $filename . '_' .time().'.'.$extension;
+            $path = $request->file('newfile')->storeAs('public/file', $fileNameToStore);
+        }
+        else {
+            $fileNameToStore = 'noImage.jpg';
+        }
+
+        $library = library::findOrFail($id);
+        $library->file = $fileNameToStore;
+        $library->name = $request->newname;
+        $library->description = $request->newdescription;
+        $library->author = $request->newauthor;
+        $library->update();
+        
+        return redirect(route('library.index'))->with('success', 'Successfully Updated');
     }
 
     /**
