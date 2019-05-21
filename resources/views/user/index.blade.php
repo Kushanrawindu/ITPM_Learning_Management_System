@@ -131,7 +131,7 @@
                             <span class="icon"><i class="flaticon-open-book"></i></span>
                             <div class="desc">
                                 <h3>Online Library Store</h3>
-                                <p><a href="#" class="view-more">View More</a></p>
+                                <p><a href="/library" class="view-more">View More</a></p>
                             </div>
                         </div>
                         <div class="one-third color-3 animate-box">

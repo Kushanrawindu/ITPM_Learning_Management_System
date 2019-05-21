@@ -50,13 +50,13 @@
                                     <tr>
                             
                                         <td>Submission Status</td>
-                                        <td>Otto</td>
+                                        <td>Not Attempt</td>
                                         
                                       </tr>
                                       <tr>
                                         
                                         <td>Grading Status</td>
-                                        <td>Thornton</td>
+                                        <td>Not Graded</td>
                                         
                                       </tr>
                                       <tr>

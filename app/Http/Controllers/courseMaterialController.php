@@ -60,6 +60,7 @@ class courseMaterialController extends Controller
         $courseMaterials->subname = $request->subName;
         $courseMaterials->week = $request->week;
         $courseMaterials->filename = $fileNameToStore;
+        // $courseMaterials->notice = $request->notice;
         $courseMaterials->save();
         
         return redirect(route('courseMaterials.index'))->with('success', 'Successfully Added');

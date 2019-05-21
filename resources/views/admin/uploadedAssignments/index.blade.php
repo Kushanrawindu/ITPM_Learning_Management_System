@@ -32,7 +32,8 @@
                           <td>{{$submitAssignment->subject}}</td>
                           <td>{{$submitAssignment->file}}</td>
         
-                             <td><a href="{{route('uploadedAssignment.edit', $submitAssignment->id)}}" class="btn btn-warning"><i class="icon_check_alt2"></i></a>
+                             <td>
+                               {{-- <a href="{{route('uploadedAssignment.edit', $submitAssignment->id)}}" class="btn btn-warning"><i class="icon_check_alt2"></i></a> --}}
                               <form action="{{route('uploadedAssignment.destroy', $submitAssignment->id)}}" method="POST">
                                 @csrf
                                 @method('DELETE')

@@ -50,6 +50,8 @@ Route::get('/', function () {
 
   Route::resource('/assignment/submit','submitAssignmentController');
 
+  Route::get('/library','libraryController@showAll');
+
 Route::get('/admin/home', function () {
     return view('admin.index');
 });
@@ -70,6 +72,8 @@ Route::resource('/admin/teacher','teacherController');
 Route::resource('/admin/assignment','assignmentController');
 
 Route::resource('/admin/uploadedAssignment','uploadedAssignmentController');
+
+Route::resource('/admin/library','libraryController');
 
 Auth::routes();
 

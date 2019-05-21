@@ -42,6 +42,15 @@
               </a>
              
         </li>
+
+        {{-- <li class="sub-menu">
+          <a href="{{route('courseMaterials.index')}}" class="">
+                        <i class="icon_document_alt"></i>
+                        <span>Add Notice</span>
+                        
+          </a>
+        </li> --}}
+        
     </ul>
   </li>
 
@@ -109,6 +118,19 @@
               
             </li>
     
+            <li class="sub-menu">
+              <a href="javascript:;" class="">
+                            <i class="icon_table"></i>
+                            <span>Library</span>
+                            <span class="menu-arrow arrow_carrot-right"></span>
+                        </a>
+              <ul class="sub">
+                <li><a class="" href="{{route('library.index')}}">Add Books</a></li>
+                
+              </ul>
+              
+            </li>
+
             <li class="sub-menu">
               <a href="javascript:;" class="">
                             <i class="icon_documents_alt"></i>

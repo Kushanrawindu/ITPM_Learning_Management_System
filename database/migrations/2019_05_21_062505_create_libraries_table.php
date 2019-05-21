@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCourseMaterialsTable extends Migration
+class CreateLibrariesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,12 @@ class CreateCourseMaterialsTable extends Migration
      */
     public function up()
     {
-        Schema::create('course_materials', function (Blueprint $table) {
+        Schema::create('libraries', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->String('subname');
-            $table->String('week');
-            $table->String('filename');
-            // $table->String('notice');
+            $table->String('file');
+            $table->String('name');
+            $table->String('description');
+            $table->String('author');
             $table->timestamps();
         });
     }
@@ -30,6 +30,6 @@ class CreateCourseMaterialsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('course_materials');
+        Schema::dropIfExists('libraries');
     }
 }

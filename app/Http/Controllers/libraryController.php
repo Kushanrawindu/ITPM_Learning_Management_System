@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\submitAssignment;
+use App\library;
 
-class submitAssignmentController extends Controller
+class LibraryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +14,13 @@ class submitAssignmentController extends Controller
      */
     public function index()
     {
-        $submitAssignments = submitAssignment::all();
-        return view('user.assignments.upload', compact('submitAssignments'));
+        $libraries = library::all();
+        return view('admin.library.index',compact('libraries'));      
+    }
+
+    public function showAll() {
+        $books = library::all();
+        return view('user.library')->with('books', $books);
     }
 
     /**
@@ -37,31 +42,33 @@ class submitAssignmentController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'studentID'=>'required',
-            'subject'=>'required',
-            'file'=>'required|mimes:docx,pdf,ppt,rar,zip|max:1999'
+            'file'=>'required|mimes:docx,pdf,ppt,rar,zip|max:1999',
+            'name'=>'required',
+            'description'=>'required',
+            'author'=>'required'
+            
         ]);
-        
+
         //handle file upload
         if($request->hasFile('file')){
             $filenameWithExt = $request->file('file')->getClientOriginalName();
             $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
             $extension = $request->file('file')->getClientOriginalExtension();
             $fileNameToStore = $filename . '_' .time().'.'.$extension;
-            $path = $request->file('file')->storeAs('public/submitted_assignments', $fileNameToStore);
+            $path = $request->file('file')->storeAs('public/file', $fileNameToStore);
         }
         else {
             $fileNameToStore = 'noImage.jpg';
         } 
 
 
-        $submitAssignments = new submitAssignment;
-        $submitAssignments->studentID = $request->studentID;
-        $submitAssignments->subject = $request->subject;
-        $submitAssignments->file = $fileNameToStore;
-        $submitAssignments->save();
-        
-        return redirect(route('submit.index'))->with('success', 'Successfully Added');
+        $library = new library();
+        $library->file = $fileNameToStore;
+        $library->name = $request->name;
+        $library->description = $request->description;
+        $library->author = $request->author;
+        $library->save();
+        return redirect(route('library.index'));
     }
 
     /**
@@ -106,6 +113,9 @@ class submitAssignmentController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $library = library::find($id);
+        $library->delete();
+
+        return redirect('/admin/library');
     }
 }

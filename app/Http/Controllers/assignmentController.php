@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\assignment;
+use Notification;
+use App\Notifications\notify;
 
 class assignmentController extends Controller
 {
@@ -51,6 +53,7 @@ class assignmentController extends Controller
         
         return redirect(route('assignment.index'))->with('success', 'Successfully Added');
 
+        Notification::route('mail','kushanrawindu@gmail.com')->notify(new notify($post));
         //dd($request->all());
     }
 
@@ -98,7 +101,7 @@ class assignmentController extends Controller
         $assignment->date = $request->newdate;
         $assignment->update();
         
-        return redirect(route('assignment.index'))->with('success', 'Successfully Added');
+        return redirect(route('assignment.index'))->with('success', 'Successfully Updated');
     }
 
     /**

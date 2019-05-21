@@ -86,7 +86,7 @@
     <div class="row">
 
     </div>
-
+{{-- 
     <div class="col-lg-12">
       <section class="panel">
         <header class="panel-heading">
@@ -96,7 +96,7 @@
           <div class="form">
             <form action="#" class="form-horizontal">
               <div class="form-group">
-                {{-- <label class="control-label col-sm-2">CKEditor</label> --}}
+                
                 <div class="col-sm-10">
                   <textarea class="form-control ckeditor" name="editor1" rows="4"></textarea>
                 </div>
@@ -105,7 +105,14 @@
           </div>
         </div>
       </section>
-    </div>
+    </div> --}}
+
+    {{-- <div class="form-group">
+      <form action="{{route('courseMaterials.store')}}" method="POST" enctype="multipart/form-data">
+        @csrf
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    </div> --}}
 
     <div class="container">
       <li class="list-item">
